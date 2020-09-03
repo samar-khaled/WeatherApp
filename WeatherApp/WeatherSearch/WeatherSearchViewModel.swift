@@ -9,10 +9,23 @@
 import Foundation
 
 class WeatherSearchViewModel {
-    func search(userInput: String, completion: @escaping(Result<Int, WeatherSearchError>) -> Void) {
+    func search(userInput: String, completion: @escaping(Result<Weather, WeatherSearchError>) -> Void) {
         guard !userInput.isEmpty else {
             completion(.failure(.emptySearchInput))
             return
+        }
+        let weatherSearch = WeatherSearchModel(userInput: userInput)
+        if !weatherSearch.isCity() && !weatherSearch.isValidZipCode() {
+            completion(.failure(.invalidSearchInput))
+            return
+        }
+        WeatherService().loadData(searchData: weatherSearch) { (result) in
+            switch result {
+            case .failure(let error):
+                completion(.failure(error))
+            case .success(let data):
+                break
+            }
         }
     }
 }
