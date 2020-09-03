@@ -42,6 +42,18 @@ class ViewController: UIViewController {
         return textField
     }()
 
+    let goButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Go!", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 5
+        button.layer.borderColor = UIColor.blue.cgColor
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: .semibold)
+        return button
+    }()
+
     // MARK: - View did load
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +65,7 @@ class ViewController: UIViewController {
         layoutControlView()
         layoutWelcomeLabel()
         layoutSearchTextField()
+        layoutGoButton()
     }
 
     private func layoutControlView() {
@@ -90,5 +103,20 @@ class ViewController: UIViewController {
         searchTextField.rightAnchor.constraint(
             equalTo: controlsView.rightAnchor,
             constant: -marginConstant).isActive = true
+    }
+
+    private func layoutGoButton() {
+        controlsView.addSubview(goButton)
+        let goButtonHeight: CGFloat = 32.0
+        let goButtonWidth: CGFloat = 200.0
+        goButton.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: marginConstant).isActive = true
+        goButton.heightAnchor.constraint(equalToConstant: goButtonHeight).isActive = true
+        goButton.centerXAnchor.constraint(equalTo: controlsView.centerXAnchor).isActive = true
+        goButton.widthAnchor.constraint(equalToConstant: goButtonWidth).isActive = true
+        goButton.addTarget(self, action: #selector(goAction(_:)), for: .touchUpInside)
+    }
+
+    // MARK: - Actions
+    @IBAction func goAction(_ sender: UIButton) {
     }
 }
