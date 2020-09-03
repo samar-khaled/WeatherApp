@@ -22,6 +22,7 @@ class WeatherSearchUITestCase: XCTestCase {
     }
 
     func test_pressingGoButtonWithoutSearchText() throws {
+        // swiftlint:disable line_length
         let goButton = app/*@START_MENU_TOKEN@*/.staticTexts["Go!"]/*[[".buttons[\"Go!\"].staticTexts[\"Go!\"]",".staticTexts[\"Go!\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         goButton.tap()
         let errorAlert = app.alerts["Error"].scrollViews.otherElements
