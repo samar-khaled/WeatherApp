@@ -38,7 +38,7 @@ class WeatherSearchViewController: UIViewController {
         textField.textColor = .blue
         textField.backgroundColor = .white
         textField.borderStyle = .roundedRect
-        textField.placeholder = "Please enter a City/state/country/etc)"
+        textField.placeholder = "Please enter a City/state/country/zipcode/etc"
         return textField
     }()
 
