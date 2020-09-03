@@ -11,12 +11,14 @@ import XCTest
 
 class WeatherSearchTestCase: XCTestCase {
 
-    let sut = WeatherSearchViewController()
+    var sut: WeatherSearchViewController!
     override func setUpWithError() throws {
+        sut = WeatherSearchViewController()
         sut.loadViewIfNeeded()
     }
 
     override func tearDownWithError() throws {
+        sut = nil
     }
 
     func test_welcomeLabelDisplayed() throws {
