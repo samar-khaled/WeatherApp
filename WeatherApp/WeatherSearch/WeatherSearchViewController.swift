@@ -49,7 +49,8 @@ class WeatherSearchViewController: UIViewController {
         button.setTitleColor(.blue, for: .normal)
         button.backgroundColor = .white
         button.layer.cornerRadius = 5
-        button.layer.borderColor = UIColor.blue.cgColor
+        button.layer.borderColor = UIColor.lightGray.cgColor
+        button.layer.borderWidth = 1
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: .semibold)
         return button
     }()
@@ -119,13 +120,17 @@ class WeatherSearchViewController: UIViewController {
     }
 
     private func showError(error: String) {
-        let alert = UIAlertController.init(title: "Error", message: error, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            let alert = UIAlertController.init(title: "Error", message: error, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 
     // MARK: - Actions
     @IBAction func goAction(_ sender: UIButton) {
+        searchTextField.resignFirstResponder()
         viewModel.search(userInput: searchTextField.text ?? "") { [weak self] (result) in
             guard let self = self else { return }
             switch result {
