@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class WeatherSearchViewController: UIViewController {
     // MARK: - Constants
     let marginConstant: CGFloat = 8
 
