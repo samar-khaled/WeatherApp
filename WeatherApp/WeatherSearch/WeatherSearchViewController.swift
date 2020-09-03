@@ -54,6 +54,8 @@ class WeatherSearchViewController: UIViewController {
         return button
     }()
 
+    // MARK: - Variables
+    let viewModel = WeatherSearchViewModel()
     // MARK: - View did load
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,7 +118,22 @@ class WeatherSearchViewController: UIViewController {
         goButton.addTarget(self, action: #selector(goAction(_:)), for: .touchUpInside)
     }
 
+    private func showError(error: String) {
+        let alert = UIAlertController.init(title: "Error", message: error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+
     // MARK: - Actions
     @IBAction func goAction(_ sender: UIButton) {
+        viewModel.search(userInput: searchTextField.text ?? "") { [weak self] (result) in
+            guard let self = self else { return }
+            switch result {
+            case .failure(let error):
+                self.showError(error: error.message)
+            case .success(_):
+                break
+            }
+        }
     }
 }
