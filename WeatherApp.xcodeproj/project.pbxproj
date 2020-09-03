@@ -14,8 +14,9 @@
 		619872BA25010BF60003DFAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 619872B925010BF60003DFAF /* Assets.xcassets */; };
 		619872BD25010BF60003DFAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 619872BB25010BF60003DFAF /* LaunchScreen.storyboard */; };
 		619872C825010BF60003DFAF /* WeatherSearchTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619872C725010BF60003DFAF /* WeatherSearchTestCase.swift */; };
-		619872D325010BF60003DFAF /* WeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619872D225010BF60003DFAF /* WeatherAppUITests.swift */; };
+		619872D325010BF60003DFAF /* WeatherSearchUITestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619872D225010BF60003DFAF /* WeatherSearchUITestCase.swift */; };
 		619872E225012AD60003DFAF /* WeatherSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619872E125012AD60003DFAF /* WeatherSearchViewModel.swift */; };
+		619872E625012C280003DFAF /* WeatherSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619872E525012C280003DFAF /* WeatherSearch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,9 +49,10 @@
 		619872C725010BF60003DFAF /* WeatherSearchTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSearchTestCase.swift; sourceTree = "<group>"; };
 		619872C925010BF60003DFAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		619872CE25010BF60003DFAF /* WeatherAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		619872D225010BF60003DFAF /* WeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppUITests.swift; sourceTree = "<group>"; };
+		619872D225010BF60003DFAF /* WeatherSearchUITestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSearchUITestCase.swift; sourceTree = "<group>"; };
 		619872D425010BF60003DFAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		619872E125012AD60003DFAF /* WeatherSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSearchViewModel.swift; sourceTree = "<group>"; };
+		619872E525012C280003DFAF /* WeatherSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSearch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +126,7 @@
 		619872D125010BF60003DFAF /* WeatherAppUITests */ = {
 			isa = PBXGroup;
 			children = (
-				619872D225010BF60003DFAF /* WeatherAppUITests.swift */,
+				619872D225010BF60003DFAF /* WeatherSearchUITestCase.swift */,
 				619872D425010BF60003DFAF /* Info.plist */,
 			);
 			path = WeatherAppUITests;
@@ -135,6 +137,7 @@
 			children = (
 				619872B425010BF20003DFAF /* WeatherSearchViewController.swift */,
 				619872E125012AD60003DFAF /* WeatherSearchViewModel.swift */,
+				619872E525012C280003DFAF /* WeatherSearch.swift */,
 			);
 			path = WeatherSearch;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 			files = (
 				619872B525010BF20003DFAF /* WeatherSearchViewController.swift in Sources */,
 				619872E225012AD60003DFAF /* WeatherSearchViewModel.swift in Sources */,
+				619872E625012C280003DFAF /* WeatherSearch.swift in Sources */,
 				619872B125010BF20003DFAF /* AppDelegate.swift in Sources */,
 				619872B325010BF20003DFAF /* SceneDelegate.swift in Sources */,
 			);
@@ -311,7 +315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				619872D325010BF60003DFAF /* WeatherAppUITests.swift in Sources */,
+				619872D325010BF60003DFAF /* WeatherSearchUITestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
