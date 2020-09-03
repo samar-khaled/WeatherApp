@@ -9,4 +9,10 @@
 import Foundation
 
 class WeatherSearchViewModel {
+    func search(userInput: String, completion: @escaping(Result<Int, WeatherSearchError>) -> Void) {
+        guard !userInput.isEmpty else {
+            completion(.failure(.emptySearchInput))
+            return
+        }
+    }
 }
