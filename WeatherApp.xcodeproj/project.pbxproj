@@ -32,6 +32,7 @@
 		6198730A2502744F0003DFAF /* WeatherDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619873082502744F0003DFAF /* WeatherDataTableViewCell.swift */; };
 		6198730B2502744F0003DFAF /* WeatherDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 619873092502744F0003DFAF /* WeatherDataTableViewCell.xib */; };
 		6198730F2502A04A0003DFAF /* UIImageView+loadFromURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6198730E2502A04A0003DFAF /* UIImageView+loadFromURL.swift */; };
+		619873112502B55A0003DFAF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 619873102502B55A0003DFAF /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		619873082502744F0003DFAF /* WeatherDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataTableViewCell.swift; sourceTree = "<group>"; };
 		619873092502744F0003DFAF /* WeatherDataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherDataTableViewCell.xib; sourceTree = "<group>"; };
 		6198730E2502A04A0003DFAF /* UIImageView+loadFromURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+loadFromURL.swift"; sourceTree = "<group>"; };
+		619873102502B55A0003DFAF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		619872A425010BF20003DFAF = {
 			isa = PBXGroup;
 			children = (
+				619873102502B55A0003DFAF /* README.md */,
 				619872AF25010BF20003DFAF /* WeatherApp */,
 				619872C625010BF60003DFAF /* WeatherAppTests */,
 				619872D125010BF60003DFAF /* WeatherAppUITests */,
@@ -350,6 +353,7 @@
 			files = (
 				619872BD25010BF60003DFAF /* LaunchScreen.storyboard in Resources */,
 				619872BA25010BF60003DFAF /* Assets.xcassets in Resources */,
+				619873112502B55A0003DFAF /* README.md in Resources */,
 				6198730B2502744F0003DFAF /* WeatherDataTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
