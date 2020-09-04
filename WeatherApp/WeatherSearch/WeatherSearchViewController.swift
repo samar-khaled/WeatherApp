@@ -57,8 +57,9 @@ class WeatherSearchViewController: UIViewController {
     }()
 
     // MARK: - Variables
-    let viewModel = WeatherSearchViewModel()
-    var searchCoordinator: SearchCoordinator?
+    private let viewModel = WeatherSearchViewModel()
+    private var searchCoordinator: SearchCoordinator?
+
     // MARK: - View did load
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -152,6 +153,7 @@ class WeatherSearchViewController: UIViewController {
             self.searchCoordinator?.start()
         }
     }
+
     // MARK: - Actions
     @IBAction func goAction(_ sender: UIButton) {
         searchTextField.resignFirstResponder()
