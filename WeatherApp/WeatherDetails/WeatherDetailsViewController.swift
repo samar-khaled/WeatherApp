@@ -30,8 +30,9 @@ class WeatherDetailsViewController: UIViewController {
         return tableView
     }()
 
+    let refreshControl = UIRefreshControl()
+
     // MARK: - variables
-    private var weatherData: Weather?
     private var viewModel: WeatherDetailsViewModel?
     var weatherTableViewHeightAnchor: NSLayoutConstraint?
 
@@ -42,19 +43,16 @@ class WeatherDetailsViewController: UIViewController {
     }
     // MARK: - Config methods
     func config(weatherData: Weather) {
-        self.weatherData = weatherData
         viewModel = WeatherDetailsViewModel(weatherData: weatherData)
     }
 
     // MARK: - private methods
     private func layoutControls() {
         self.view.backgroundColor = .systemBackground
+        layoutHeaderView()
         if let viewModel = viewModel {
             self.title = viewModel.getCityName()
-        }
-        layoutHeaderView()
-        if let weatherData = weatherData {
-            weatherDetailsHeaderView.config(weatherData: weatherData)
+            weatherDetailsHeaderView.config(weatherData: viewModel.getWeatherData())
         }
         layoutTableView()
     }
@@ -75,7 +73,7 @@ class WeatherDetailsViewController: UIViewController {
 
     private func layoutTableView() {
         view.addSubview(weatherTableView)
-        let height = WeatherDataTableViewCell.cellHeight * CGFloat(weatherData?.list.count ?? 0)
+        let height = WeatherDataTableViewCell.cellHeight * CGFloat(viewModel?.getWeatherData().list.count ?? 0)
         weatherTableViewHeightAnchor = weatherTableView.heightAnchor.constraint(equalToConstant: height)
         weatherTableViewHeightAnchor?.priority = UILayoutPriority.defaultHigh
         weatherTableViewHeightAnchor?.isActive = true
@@ -94,13 +92,49 @@ class WeatherDetailsViewController: UIViewController {
         weatherTableView.register(
             UINib(nibName: WeatherDataTableViewCell.cellNib, bundle: nil),
             forCellReuseIdentifier: WeatherDataTableViewCell.cellIdentifier)
+
+        self.refreshControl.addTarget(self, action: #selector(refreshDataRequested), for: .valueChanged)
+        weatherTableView.refreshControl = refreshControl
+    }
+
+    @objc private func refreshDataRequested() {
+        guard let viewModel = viewModel else { return }
+        viewModel.refreshWeatherData { [weak self] (result) in
+            guard let self = self else { return }
+            switch result {
+            case .success(let weather):
+                self.refreshUI(weatherData: weather)
+            default:
+                self.stopRefreshControl()
+            }
+        }
+    }
+
+    private func refreshUI(weatherData: Weather) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.weatherTableView.reloadData()
+            self.weatherDetailsHeaderView.config(weatherData: weatherData)
+            self.stopRefreshControl()
+        }
+    }
+
+    private func stopRefreshControl() {
+        if Thread.isMainThread {
+            if self.refreshControl.isRefreshing { self.refreshControl.endRefreshing() }
+            return
+        }
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            if self.refreshControl.isRefreshing { self.refreshControl.endRefreshing() }
+        }
     }
 }
 
 extension WeatherDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let weatherData = weatherData else { return 0 }
-        return weatherData.list.count
+        guard let viewModel = viewModel else { return 0 }
+        return viewModel.getWeatherData().list.count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -108,15 +142,13 @@ extension WeatherDetailsViewController: UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let weatherData = weatherData else {
-            return UITableViewCell()
-        }
+        guard let viewModel = viewModel else { return UITableViewCell() }
         if let cell = tableView.dequeueReusableCell(
             withIdentifier: WeatherDataTableViewCell.cellIdentifier,
             for: indexPath
             ) as? WeatherDataTableViewCell {
 
-            cell.config(weatherForecast: weatherData.list[indexPath.row])
+            cell.config(weatherForecast: viewModel.getWeatherData().list[indexPath.row])
             return cell
         }
         return UITableViewCell()
