@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 
+protocol DetailsNaviagtor {
+    func viewMapPressed()
+}
+
 class WeatherDetailsHeaderView: UIView {
     // MARK: - Constants
     let marginConstant: CGFloat = 8
@@ -45,7 +49,7 @@ class WeatherDetailsHeaderView: UIView {
         return image
     }()
 
-    let viewMap: UIButton = {
+    let viewMapButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Map", for: .normal)
@@ -57,8 +61,11 @@ class WeatherDetailsHeaderView: UIView {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: .semibold)
         return button
     }()
-    // MARK: -
-    var weatherData: Weather?
+
+    // MARK: - Variables
+    private var weatherData: Weather?
+    private var detailsNaviagtor: DetailsNaviagtor?
+
     // MARK: - init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -78,6 +85,7 @@ class WeatherDetailsHeaderView: UIView {
         layoutTemperatureLabel()
         layoutCurrentConditionImageView()
         layoutCurrentConditionLabel()
+        layoutViewMapButton()
     }
 
     fileprivate func layoutDateLabel() {
@@ -100,10 +108,10 @@ class WeatherDetailsHeaderView: UIView {
         self.addSubview(currentConditionImageView)
         currentConditionImageView.topAnchor.constraint(
             equalTo: self.topAnchor, constant: marginConstant).isActive = true
-        currentConditionImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        currentConditionImageView.heightAnchor.constraint(equalToConstant: 84).isActive = true
         currentConditionImageView.rightAnchor.constraint(
             equalTo: self.rightAnchor, constant: marginConstant).isActive = true
-        currentConditionImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        currentConditionImageView.widthAnchor.constraint(equalToConstant: 84).isActive = true
     }
 
     fileprivate func layoutCurrentConditionLabel() {
@@ -115,13 +123,24 @@ class WeatherDetailsHeaderView: UIView {
         currentConditionLabel.widthAnchor.constraint(equalToConstant: 90).isActive = true
     }
 
+    fileprivate func layoutViewMapButton() {
+        self.addSubview(viewMapButton)
+        viewMapButton.topAnchor.constraint(
+            equalTo: currentConditionImageView.bottomAnchor, constant: marginConstant).isActive = true
+        viewMapButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        viewMapButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -marginConstant).isActive = true
+        viewMapButton.widthAnchor.constraint(equalToConstant: 90).isActive = true
+        viewMapButton.addTarget(self, action: #selector(viewMapAction(_:)), for: .touchUpInside)
+    }
+
     // MARK: - helper func
     func getViewHeight() -> CGFloat {
         return 140
     }
 
-    func config(weatherData: Weather) {
+    func config(weatherData: Weather, detailsNaviagtor: DetailsNaviagtor) {
         self.weatherData = weatherData
+        self.detailsNaviagtor = detailsNaviagtor
         dateLabel.text = weatherData.getDateTextNow()
         temperatureLabel.text = weatherData.getTemperatureTextNow()
         currentConditionLabel.text = weatherData.getCurrentConditionTextNow()
@@ -129,5 +148,11 @@ class WeatherDetailsHeaderView: UIView {
             currentConditionImageView.load(url: WeatherService().getImageUrl(imageName: imageName)
             )
         }
+    }
+
+    // MARK: - Actions
+    @IBAction func viewMapAction(_ sender: UIButton) {
+        guard let delegate = detailsNaviagtor else { return }
+        delegate.viewMapPressed()
     }
 }

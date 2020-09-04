@@ -34,7 +34,8 @@ class WeatherDetailsViewController: UIViewController {
 
     // MARK: - variables
     private var viewModel: WeatherDetailsViewModel?
-    var weatherTableViewHeightAnchor: NSLayoutConstraint?
+    private var weatherTableViewHeightAnchor: NSLayoutConstraint?
+    private var detailsCoordinator: DetailsCoordinator?
 
     // MARK: - view did load
     override func viewDidLoad() {
@@ -52,7 +53,7 @@ class WeatherDetailsViewController: UIViewController {
         layoutHeaderView()
         if let viewModel = viewModel {
             self.title = viewModel.getCityName()
-            weatherDetailsHeaderView.config(weatherData: viewModel.getWeatherData())
+            weatherDetailsHeaderView.config(weatherData: viewModel.getWeatherData(), detailsNaviagtor: self)
         }
         layoutTableView()
     }
@@ -114,7 +115,7 @@ class WeatherDetailsViewController: UIViewController {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.weatherTableView.reloadData()
-            self.weatherDetailsHeaderView.config(weatherData: weatherData)
+            self.weatherDetailsHeaderView.config(weatherData: weatherData, detailsNaviagtor: self)
             self.stopRefreshControl()
         }
     }
@@ -152,5 +153,16 @@ extension WeatherDetailsViewController: UITableViewDelegate, UITableViewDataSour
             return cell
         }
         return UITableViewCell()
+    }
+}
+
+extension WeatherDetailsViewController: DetailsNaviagtor {
+    func viewMapPressed() {
+        guard let navigationController = self.navigationController,
+            let weatherData = viewModel?.getWeatherData() else {
+                return
+        }
+        detailsCoordinator = DetailsCoordinator(rootViewController: navigationController, weatherData: weatherData)
+        detailsCoordinator?.start()
     }
 }
