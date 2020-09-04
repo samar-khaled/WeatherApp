@@ -12,16 +12,35 @@ class WeatherDataTableViewCell: UITableViewCell {
     // MARK: - Constants
     static let cellIdentifier = "WeatherDataTableViewCell"
     static let cellNib = "WeatherDataTableViewCell"
-    static let cellHeight: CGFloat = 81
-    
-    var weatherForecast: WeatherForecast?
+    static let cellHeight: CGFloat = 200
     // MARK: - Controls
+    @IBOutlet weak var dateLable: UILabel!
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var statusImageView: UIImageView!
+    @IBOutlet weak var pressureLabel: UILabel!
+    @IBOutlet weak var humidityLabel: UILabel!
+    @IBOutlet weak var precipitationLabel: UILabel!
+    @IBOutlet weak var currentConditionLabel: UILabel!
+
+    private var weatherForecast: WeatherForecast?
     // MARK: - awake from Nib
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupUI()
     }
-    // MARK: - private func
-    private func setupUI() {
+
+    // MARK: - helper func
+    func config(weatherForecast: WeatherForecast) {
+        self.weatherForecast = weatherForecast
+        dateLable.text = weatherForecast.getDateText()
+        temperatureLabel.text = weatherForecast.main.getTempatureText()
+        humidityLabel.text = weatherForecast.main.getHumidityText()
+        pressureLabel.text = weatherForecast.main.getPressureText()
+        precipitationLabel.text = weatherForecast.getPrecipitationText()
+        currentConditionLabel.text = weatherForecast.getCurrentConditionText()
+        let imageName = weatherForecast.getCurrentConditionImageText() ?? "01d"
+        statusImageView.load(url:
+            URL(string: "http://openweathermap.org/img/wn/\(imageName)@2x.png"
+            )
+        )
     }
 }
