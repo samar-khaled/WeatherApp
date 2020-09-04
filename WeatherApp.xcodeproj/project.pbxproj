@@ -34,6 +34,7 @@
 		6198730F2502A04A0003DFAF /* UIImageView+loadFromURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6198730E2502A04A0003DFAF /* UIImageView+loadFromURL.swift */; };
 		619873112502B55A0003DFAF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 619873102502B55A0003DFAF /* README.md */; };
 		619873132502C1DD0003DFAF /* String+trimSpaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619873122502C1DD0003DFAF /* String+trimSpaces.swift */; };
+		619873152502C40E0003DFAF /* WeatherDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619873142502C40E0003DFAF /* WeatherDetailsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		6198730E2502A04A0003DFAF /* UIImageView+loadFromURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+loadFromURL.swift"; sourceTree = "<group>"; };
 		619873102502B55A0003DFAF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		619873122502C1DD0003DFAF /* String+trimSpaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+trimSpaces.swift"; sourceTree = "<group>"; };
+		619873142502C40E0003DFAF /* WeatherDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +229,7 @@
 				61987307250274130003DFAF /* Cell */,
 				619872FE250259AB0003DFAF /* WeatherDetailsViewController.swift */,
 				61987300250259E00003DFAF /* WeatherDetailsHeaderView.swift */,
+				619873142502C40E0003DFAF /* WeatherDetailsViewModel.swift */,
 			);
 			path = WeatherDetails;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				619872ED250178990003DFAF /* WeatherData.swift in Sources */,
 				619872E625012C280003DFAF /* WeatherSearch.swift in Sources */,
 				619872E92501495E0003DFAF /* WeatherService.swift in Sources */,
+				619873152502C40E0003DFAF /* WeatherDetailsViewModel.swift in Sources */,
 				619872B125010BF20003DFAF /* AppDelegate.swift in Sources */,
 				619872B325010BF20003DFAF /* SceneDelegate.swift in Sources */,
 				619872FA25024D660003DFAF /* SpinnerViewController.swift in Sources */,
