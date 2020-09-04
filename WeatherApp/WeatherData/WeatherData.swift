@@ -15,6 +15,31 @@ struct Weather: Decodable, Equatable {
     var message: Double
     var cnt: Int
     var list: [WeatherForecast]
+
+    func getTemperatureTextNow() -> String {
+        return list.first?.main.getTempatureText() ?? "0°"
+    }
+
+    func getPressureTextNow() -> String {
+        return list.first?.main.getPressureText() ?? "0 hPa"
+    }
+
+    func getHumidityTextNow() -> String {
+        return list.first?.main.getHumidityText() ?? "0%"
+    }
+
+    func getDateTextNow() -> String {
+        let date = list.first?.getDate() ?? Date()
+        return "as of \(DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .long))"
+    }
+
+    func getCurrentConditionTextNow() -> String {
+        return list.first?.weather.first?.main ?? ""
+    }
+
+    func getCurrentConditionImageTextNow() -> String? {
+        return list.first?.weather.first?.icon
+    }
 }
 
 struct City: Decodable, Equatable {
@@ -27,11 +52,11 @@ struct City: Decodable, Equatable {
     var sunset: Int
 
     func getSunriseDate() -> Date {
-        Date(timeIntervalSince1970: TimeInterval(sunrise))
+        Date(timeIntervalSince1970: TimeInterval(sunrise) + Double(timezone))
     }
 
     func getSunsetDate() -> Date {
-        Date(timeIntervalSince1970: TimeInterval(sunset))
+        Date(timeIntervalSince1970: TimeInterval(sunset) + Double(timezone))
     }
 }
 
@@ -49,8 +74,26 @@ struct WeatherForecast: Decodable, Equatable {
     var visibility: Int
     var pop: Double
     var rain: [String: Double]?
+    var dt_txt: String
     func getDate() -> Date {
         Date(timeIntervalSince1970: TimeInterval(dt))
+    }
+
+    func getDateText() -> String {
+        let date = getDate()
+        return DateFormatter.localizedString(from: date, dateStyle: .short, timeStyle: .short)
+    }
+
+    func getPrecipitationText() -> String {
+        return "\(pop) cm"
+    }
+
+    func getCurrentConditionText() -> String? {
+        return weather.first?.main
+    }
+
+    func getCurrentConditionImageText() -> String? {
+        return weather.first?.icon
     }
 }
 
@@ -64,6 +107,18 @@ struct Temperature: Decodable, Equatable {
     var grnd_level: Int
     var humidity: Int
     var temp_kf: Double
+
+    func getTempatureText() -> String {
+        return "\(temp)" + "°"
+    }
+
+    func getPressureText() -> String {
+        return "\(pressure)" + " hPa"
+    }
+
+    func getHumidityText() -> String {
+        return "\(humidity)" + "%"
+    }
 }
 
 struct WeatherDetails: Decodable, Equatable {
