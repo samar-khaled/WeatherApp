@@ -16,7 +16,9 @@ STORY-3: As a user, I can see the weather conditions for a location for the next
 
 STORY-4: As a user, I can refresh to see the weather for the entered location I should be able to pull and refresh the list.
 
+STORY-5: As a user, I can see the input location on a small map view The map can be either a static map image centered on the location, or some live map component (google maps, open street maps, etc).
+
 Notes:
-- The app using *rapidapi* for Open Weather Map API.
+- The app using *rapidapi* for Open Weather Map API https://openweathermap.org/forecast5 
 - Most of the app layout is done programatically, just one view was using Nib files.
 - There are unit testing and UI testing.
