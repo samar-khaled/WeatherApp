@@ -21,7 +21,7 @@ class WeatherDataTableViewCell: UITableViewCell {
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var precipitationLabel: UILabel!
     @IBOutlet weak var currentConditionLabel: UILabel!
-
+    @IBOutlet weak var feelsLikeLabel: UILabel!
     private var weatherForecast: WeatherForecast?
     // MARK: - awake from Nib
     override func awakeFromNib() {
@@ -36,11 +36,10 @@ class WeatherDataTableViewCell: UITableViewCell {
         humidityLabel.text = weatherForecast.main.getHumidityText()
         pressureLabel.text = weatherForecast.main.getPressureText()
         precipitationLabel.text = weatherForecast.getPrecipitationText()
+        feelsLikeLabel.text = weatherForecast.main.getFeelsLikeText()
         currentConditionLabel.text = weatherForecast.getCurrentConditionText()
         if let imageName = weatherForecast.getCurrentConditionImageText() {
-            statusImageView.load(url:
-                    URL(string: "http://openweathermap.org/img/wn/\(imageName)@2x.png"
-                    )
+            statusImageView.load(url: WeatherService().getImageUrl(imageName: imageName)
             )
         }
     }
