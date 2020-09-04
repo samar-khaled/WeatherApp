@@ -31,7 +31,8 @@ class WeatherDetailsViewController: UIViewController {
     }()
 
     // MARK: - variables
-    var weatherData: Weather?
+    private var weatherData: Weather?
+    private var viewModel: WeatherDetailsViewModel?
     var weatherTableViewHeightAnchor: NSLayoutConstraint?
 
     // MARK: - view did load
@@ -39,12 +40,17 @@ class WeatherDetailsViewController: UIViewController {
         super.viewDidLoad()
         layoutControls()
     }
+    // MARK: - Config methods
+    func config(weatherData: Weather) {
+        self.weatherData = weatherData
+        viewModel = WeatherDetailsViewModel(weatherData: weatherData)
+    }
 
     // MARK: - private methods
     private func layoutControls() {
         self.view.backgroundColor = .systemBackground
-        if let weatherData = weatherData {
-            self.title = "\(weatherData.city.name), \(weatherData.city.country)"
+        if let viewModel = viewModel {
+            self.title = viewModel.getCityName()
         }
         layoutHeaderView()
         if let weatherData = weatherData {

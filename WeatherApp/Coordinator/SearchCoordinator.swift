@@ -19,7 +19,7 @@ class SearchCoordinator: Coordinator {
 
     func start() {
         let viewController = WeatherDetailsViewController()
-        viewController.weatherData = weatherData
+        viewController.config(weatherData: weatherData)
         self.rootViewController.pushViewController(viewController, animated: true)
     }
 }
