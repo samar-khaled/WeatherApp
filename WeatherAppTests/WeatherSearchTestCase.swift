@@ -32,4 +32,10 @@ class WeatherSearchTestCase: XCTestCase {
     func test_goButtonDisplayed() throws {
         XCTAssertEqual(sut.goButton.titleLabel?.text, "Go!")
     }
+
+    func test_goButtonAction_showLoading() throws {
+        sut.searchTextField.text = "Cairo"
+        sut.goAction(sut.goButton)
+        _ = try XCTUnwrap(sut.children.first as? SpinnerViewController)
+    }
 }
