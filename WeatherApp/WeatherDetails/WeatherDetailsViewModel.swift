@@ -15,8 +15,25 @@ class WeatherDetailsViewModel {
     init(weatherData: Weather) {
         self.weatherData = weatherData
     }
-    // MARK: Helper func
+    // MARK: - Helper func
     func getCityName() -> String {
         return "\(weatherData.city.name), \(weatherData.city.country)"
+    }
+
+    func getWeatherData() -> Weather {
+        weatherData
+    }
+
+    func refreshWeatherData(completion: @escaping(Result<Weather, WeatherSearchError>) -> Void) {
+        let weatherSearch = WeatherSearchModel(userInput: weatherData.city.name)
+        WeatherService().loadData(searchData: weatherSearch) { (result) in
+            switch result {
+            case .failure(let error):
+                completion(.failure(error))
+            case .success(let weather):
+                self.weatherData = weather
+                completion(.success(weather))
+            }
+        }
     }
 }
