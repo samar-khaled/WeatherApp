@@ -20,7 +20,7 @@ protocol Networking {
     func fetch(_ endpoint: Endpoint, completion: @escaping (Result<Data, NetworkError>) -> Void)
 }
 
-enum NetworkError: Error {
+enum NetworkError: Error, Equatable {
     case backendError
     case network(statusCode: Int)
     case invalidData

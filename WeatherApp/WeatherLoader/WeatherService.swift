@@ -43,7 +43,7 @@ class WeatherService: NSObject, DataLoader {
 
     func loadData(searchData: WeatherSearchModel, completion: @escaping(Result<Weather, WeatherSearchError>) -> Void) {
         guard let endPoint = getEndPoint(searchData: searchData) else {
-            completion(.failure(.errorRetriveData))
+            completion(.failure(.invalidSearchInput))
             return
         }
 
