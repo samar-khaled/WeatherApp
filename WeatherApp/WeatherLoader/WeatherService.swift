@@ -11,13 +11,14 @@ import Foundation
 protocol DataLoader {
     var network: Networking { get }
     func loadData(searchData: WeatherSearchModel, completion: @escaping(Result<Weather, WeatherSearchError>) -> Void)
+    func getImageUrl(imageName: String) -> URL?
 }
 
 extension Endpoint: RequestProviding {
     var urlRequest: URLRequest {
         switch self {
         case .weather(let params):
-            let params = params.replacingOccurrences(of: " ", with: "")
+            let params = params.trimSpaces().replacingOccurrences(of: " ", with: "%20")
             guard let url = URL(
                 string: "https://community-open-weather-map.p.rapidapi.com/forecast?units=imperial&\(params)")
                 else {
@@ -58,7 +59,7 @@ class WeatherService: NSObject, DataLoader {
                         completion(.failure(.errorRetriveData))
                     }
                 case .backendError:
-                     completion(.failure(.errorRetriveData))
+                    completion(.failure(.errorRetriveData))
                 case .invalidData:
                     completion(.failure(.errorRetriveData))
                 }
@@ -72,11 +73,17 @@ class WeatherService: NSObject, DataLoader {
         }
     }
 
+    func getImageUrl(imageName: String) -> URL? {
+        return URL(string: "http://openweathermap.org/img/wn/\(imageName)@2x.png"
+        )
+    }
+
+    // MARK: - private func
     private func getEndPoint(searchData: WeatherSearchModel) -> Endpoint? {
         if searchData.isCity() {
             return .weather(params: "q=\(searchData.userInput)")
         } else if searchData.isValidZipCode() {
-           return .weather(params: "zip=\(searchData.userInput)")
+            return .weather(params: "zip=\(searchData.userInput)")
         }
         return nil
     }
