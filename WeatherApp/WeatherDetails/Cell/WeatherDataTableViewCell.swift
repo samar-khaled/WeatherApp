@@ -37,10 +37,11 @@ class WeatherDataTableViewCell: UITableViewCell {
         pressureLabel.text = weatherForecast.main.getPressureText()
         precipitationLabel.text = weatherForecast.getPrecipitationText()
         currentConditionLabel.text = weatherForecast.getCurrentConditionText()
-        let imageName = weatherForecast.getCurrentConditionImageText() ?? "01d"
-        statusImageView.load(url:
-            URL(string: "http://openweathermap.org/img/wn/\(imageName)@2x.png"
+        if let imageName = weatherForecast.getCurrentConditionImageText() {
+            statusImageView.load(url:
+                    URL(string: "http://openweathermap.org/img/wn/\(imageName)@2x.png"
+                    )
             )
-        )
+        }
     }
 }

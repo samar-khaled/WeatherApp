@@ -25,8 +25,7 @@ class WeatherDetailsViewController: UIViewController {
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         tableView.backgroundColor = .clear
         tableView.allowsSelection = false
-        tableView.showsVerticalScrollIndicator = true
-        tableView.showsHorizontalScrollIndicator = false
+        tableView.alwaysBounceVertical = true
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -43,9 +42,14 @@ class WeatherDetailsViewController: UIViewController {
 
     // MARK: - private methods
     private func layoutControls() {
-        self.view.backgroundColor = .white
-        self.title = weatherData?.city.name
+        self.view.backgroundColor = .systemBackground
+        if let weatherData = weatherData {
+            self.title = "\(weatherData.city.name), \(weatherData.city.country)"
+        }
         layoutHeaderView()
+        if let weatherData = weatherData {
+            weatherDetailsHeaderView.config(weatherData: weatherData)
+        }
         layoutTableView()
     }
 
@@ -59,7 +63,7 @@ class WeatherDetailsViewController: UIViewController {
         weatherDetailsHeaderView.heightAnchor.constraint(
             equalToConstant: weatherDetailsHeaderView.getViewHeight()
         ).isActive = true
-        weatherDetailsHeaderView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        weatherDetailsHeaderView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
         weatherDetailsHeaderView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
 
@@ -67,10 +71,19 @@ class WeatherDetailsViewController: UIViewController {
         view.addSubview(weatherTableView)
         let height = WeatherDataTableViewCell.cellHeight * CGFloat(weatherData?.list.count ?? 0)
         weatherTableViewHeightAnchor = weatherTableView.heightAnchor.constraint(equalToConstant: height)
+        weatherTableViewHeightAnchor?.priority = UILayoutPriority.defaultHigh
         weatherTableViewHeightAnchor?.isActive = true
-        weatherTableView.topAnchor.constraint(equalTo: weatherDetailsHeaderView.bottomAnchor).isActive = true
-        weatherTableView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        weatherTableView.topAnchor.constraint(
+            equalTo: weatherDetailsHeaderView.bottomAnchor,
+            constant: 16
+        ).isActive = true
+        weatherTableView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
         weatherTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        if #available(iOS 11.0, *) {
+            weatherTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        } else {
+            weatherTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        }
 
         weatherTableView.register(
             UINib(nibName: WeatherDataTableViewCell.cellNib, bundle: nil),
@@ -84,6 +97,10 @@ extension WeatherDetailsViewController: UITableViewDelegate, UITableViewDataSour
         return weatherData.list.count
     }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return WeatherDataTableViewCell.cellHeight
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let weatherData = weatherData else {
             return UITableViewCell()
@@ -93,7 +110,7 @@ extension WeatherDetailsViewController: UITableViewDelegate, UITableViewDataSour
             for: indexPath
             ) as? WeatherDataTableViewCell {
 
-            cell.weatherForecast = weatherData.list[indexPath.row]
+            cell.config(weatherForecast: weatherData.list[indexPath.row])
             return cell
         }
         return UITableViewCell()
