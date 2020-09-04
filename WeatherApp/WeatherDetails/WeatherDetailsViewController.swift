@@ -149,7 +149,7 @@ extension WeatherDetailsViewController: UITableViewDelegate, UITableViewDataSour
             for: indexPath
             ) as? WeatherDataTableViewCell {
 
-            cell.config(weatherForecast: viewModel.getWeatherData().list[indexPath.row])
+            cell.config(weatherForecast: viewModel.getWeatherForecast()[indexPath.row])
             return cell
         }
         return UITableViewCell()

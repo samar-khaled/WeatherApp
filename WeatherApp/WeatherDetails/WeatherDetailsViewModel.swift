@@ -24,6 +24,10 @@ class WeatherDetailsViewModel {
         weatherData
     }
 
+    func getWeatherForecast() -> [WeatherForecast] {
+        return weatherData.list
+    }
+
     func refreshWeatherData(completion: @escaping(Result<Weather, WeatherSearchError>) -> Void) {
         let weatherSearch = WeatherSearchModel(userInput: weatherData.city.name)
         WeatherService().loadData(searchData: weatherSearch) { (result) in
