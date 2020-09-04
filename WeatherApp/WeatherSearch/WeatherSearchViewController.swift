@@ -138,6 +138,14 @@ class WeatherSearchViewController: UIViewController {
         self.removeViewController(viewController: loadingView)
     }
 
+    private func finishSearching(weatherData: Weather) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            let viewController = WeatherDetailsViewController()
+            viewController.weatherData = weatherData
+            self.present(viewController, animated: true, completion: nil)
+        }
+    }
     // MARK: - Actions
     @IBAction func goAction(_ sender: UIButton) {
         searchTextField.resignFirstResponder()
@@ -148,8 +156,8 @@ class WeatherSearchViewController: UIViewController {
             switch result {
             case .failure(let error):
                 self.showError(error: error.message)
-            case .success(_):
-                break
+            case .success(let weatherData):
+                self.finishSearching(weatherData: weatherData)
             }
         }
     }
