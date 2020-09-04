@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -35,6 +35,7 @@
 		619873112502B55A0003DFAF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 619873102502B55A0003DFAF /* README.md */; };
 		619873132502C1DD0003DFAF /* String+trimSpaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619873122502C1DD0003DFAF /* String+trimSpaces.swift */; };
 		619873152502C40E0003DFAF /* WeatherDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619873142502C40E0003DFAF /* WeatherDetailsViewModel.swift */; };
+		619873182502CE460003DFAF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 619873172502CE460003DFAF /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				619873182502CE460003DFAF /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +271,9 @@
 			dependencies = (
 			);
 			name = WeatherApp;
+			packageProductDependencies = (
+				619873172502CE460003DFAF /* Kingfisher */,
+			);
 			productName = WeatherApp;
 			productReference = 619872AD25010BF20003DFAF /* WeatherApp.app */;
 			productType = "com.apple.product-type.application";
@@ -341,6 +346,9 @@
 				Base,
 			);
 			mainGroup = 619872A425010BF20003DFAF;
+			packageReferences = (
+				619873162502CE460003DFAF /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 619872AE25010BF20003DFAF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -742,6 +750,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		619873162502CE460003DFAF /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.15.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		619873172502CE460003DFAF /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 619873162502CE460003DFAF /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 619872A525010BF20003DFAF /* Project object */;
 }
