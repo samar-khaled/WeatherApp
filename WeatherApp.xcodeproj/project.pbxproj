@@ -36,6 +36,9 @@
 		619873132502C1DD0003DFAF /* String+trimSpaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619873122502C1DD0003DFAF /* String+trimSpaces.swift */; };
 		619873152502C40E0003DFAF /* WeatherDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619873142502C40E0003DFAF /* WeatherDetailsViewModel.swift */; };
 		619873182502CE460003DFAF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 619873172502CE460003DFAF /* Kingfisher */; };
+		6198731B2502D1640003DFAF /* MapViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6198731A2502D1640003DFAF /* MapViewViewController.swift */; };
+		6198731D2502D1770003DFAF /* MapViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6198731C2502D1770003DFAF /* MapViewViewModel.swift */; };
+		6198731F2502D1890003DFAF /* DetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6198731E2502D1890003DFAF /* DetailsCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +93,9 @@
 		619873102502B55A0003DFAF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		619873122502C1DD0003DFAF /* String+trimSpaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+trimSpaces.swift"; sourceTree = "<group>"; };
 		619873142502C40E0003DFAF /* WeatherDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsViewModel.swift; sourceTree = "<group>"; };
+		6198731A2502D1640003DFAF /* MapViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewViewController.swift; sourceTree = "<group>"; };
+		6198731C2502D1770003DFAF /* MapViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewViewModel.swift; sourceTree = "<group>"; };
+		6198731E2502D1890003DFAF /* DetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +148,7 @@
 		619872AF25010BF20003DFAF /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				619873192502D1160003DFAF /* MapView */,
 				6198730425025B9D0003DFAF /* Coordinator */,
 				619872FD2502563A0003DFAF /* WeatherDetails */,
 				619872F825024D3F0003DFAF /* Helper */,
@@ -241,6 +248,7 @@
 			children = (
 				6198730225025B920003DFAF /* AppCoordinator.swift */,
 				61987305250266AD0003DFAF /* SearchCoordinator.swift */,
+				6198731E2502D1890003DFAF /* DetailsCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -252,6 +260,15 @@
 				619873092502744F0003DFAF /* WeatherDataTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		619873192502D1160003DFAF /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				6198731A2502D1640003DFAF /* MapViewViewController.swift */,
+				6198731C2502D1770003DFAF /* MapViewViewModel.swift */,
+			);
+			path = MapView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,12 +436,14 @@
 				619872B525010BF20003DFAF /* WeatherSearchViewController.swift in Sources */,
 				6198730325025B920003DFAF /* AppCoordinator.swift in Sources */,
 				6198730A2502744F0003DFAF /* WeatherDataTableViewCell.swift in Sources */,
+				6198731F2502D1890003DFAF /* DetailsCoordinator.swift in Sources */,
 				619872FC250255C50003DFAF /* UIViewController+AddViewController.swift in Sources */,
 				61987301250259E00003DFAF /* WeatherDetailsHeaderView.swift in Sources */,
 				6198730F2502A04A0003DFAF /* UIImageView+loadFromURL.swift in Sources */,
 				619872E225012AD60003DFAF /* WeatherSearchViewModel.swift in Sources */,
 				61987306250266AD0003DFAF /* SearchCoordinator.swift in Sources */,
 				619873132502C1DD0003DFAF /* String+trimSpaces.swift in Sources */,
+				6198731D2502D1770003DFAF /* MapViewViewModel.swift in Sources */,
 				619872EF25019B610003DFAF /* Network.swift in Sources */,
 				619872ED250178990003DFAF /* WeatherData.swift in Sources */,
 				619872E625012C280003DFAF /* WeatherSearch.swift in Sources */,
@@ -432,6 +451,7 @@
 				619873152502C40E0003DFAF /* WeatherDetailsViewModel.swift in Sources */,
 				619872B125010BF20003DFAF /* AppDelegate.swift in Sources */,
 				619872B325010BF20003DFAF /* SceneDelegate.swift in Sources */,
+				6198731B2502D1640003DFAF /* MapViewViewController.swift in Sources */,
 				619872FA25024D660003DFAF /* SpinnerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
