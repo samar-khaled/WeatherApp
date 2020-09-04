@@ -39,6 +39,7 @@
 		6198731B2502D1640003DFAF /* MapViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6198731A2502D1640003DFAF /* MapViewViewController.swift */; };
 		6198731D2502D1770003DFAF /* MapViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6198731C2502D1770003DFAF /* MapViewViewModel.swift */; };
 		6198731F2502D1890003DFAF /* DetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6198731E2502D1890003DFAF /* DetailsCoordinator.swift */; };
+		619873222502F99F0003DFAF /* WeatherSearchViewModelTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619873212502F99F0003DFAF /* WeatherSearchViewModelTestCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		6198731A2502D1640003DFAF /* MapViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewViewController.swift; sourceTree = "<group>"; };
 		6198731C2502D1770003DFAF /* MapViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewViewModel.swift; sourceTree = "<group>"; };
 		6198731E2502D1890003DFAF /* DetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCoordinator.swift; sourceTree = "<group>"; };
+		619873212502F99F0003DFAF /* WeatherSearchViewModelTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSearchViewModelTestCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 				619872F22501B85E0003DFAF /* data.json */,
 				619872F42501B87E0003DFAF /* WeatherDataTestCase.swift */,
 				619872F62501BB620003DFAF /* NetworkTestCase.swift */,
+				619873212502F99F0003DFAF /* WeatherSearchViewModelTestCase.swift */,
 			);
 			path = WeatherAppTests;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				619873222502F99F0003DFAF /* WeatherSearchViewModelTestCase.swift in Sources */,
 				619872F52501B87E0003DFAF /* WeatherDataTestCase.swift in Sources */,
 				619872F12501AF3B0003DFAF /* WeatherSearchModelTestCase.swift in Sources */,
 				619872F72501BB620003DFAF /* NetworkTestCase.swift in Sources */,
