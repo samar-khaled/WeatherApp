@@ -65,6 +65,7 @@ class WeatherSearchViewController: UIViewController {
 
     // MARK: - Private func
     private func layoutControls() {
+        self.view.backgroundColor = .white
         layoutControlView()
         layoutWelcomeLabel()
         layoutSearchTextField()
@@ -143,7 +144,7 @@ class WeatherSearchViewController: UIViewController {
             guard let self = self else { return }
             let viewController = WeatherDetailsViewController()
             viewController.weatherData = weatherData
-            self.present(viewController, animated: true, completion: nil)
+            self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
     // MARK: - Actions
