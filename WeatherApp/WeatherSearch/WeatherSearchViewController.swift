@@ -38,6 +38,7 @@ class WeatherSearchViewController: UIViewController {
         textField.textColor = .blue
         textField.backgroundColor = .white
         textField.borderStyle = .roundedRect
+        textField.returnKeyType = .search
         textField.placeholder = "Please enter a City/state/country/zipcode/etc"
         return textField
     }()
@@ -108,6 +109,7 @@ class WeatherSearchViewController: UIViewController {
         searchTextField.rightAnchor.constraint(
             equalTo: controlsView.rightAnchor,
             constant: -marginConstant).isActive = true
+        searchTextField.delegate = self
     }
 
     private func layoutGoButton() {
@@ -164,5 +166,12 @@ class WeatherSearchViewController: UIViewController {
                 self.finishSearching(weatherData: weatherData)
             }
         }
+    }
+}
+
+extension WeatherSearchViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.goAction(goButton)
+        return true
     }
 }
