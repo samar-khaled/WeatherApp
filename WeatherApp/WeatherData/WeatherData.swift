@@ -119,6 +119,10 @@ struct Temperature: Decodable, Equatable {
     func getHumidityText() -> String {
         return "\(humidity)" + "%"
     }
+
+    func getFeelsLikeText() -> String {
+        return "\(feels_like)" + "°"
+    }
 }
 
 struct WeatherDetails: Decodable, Equatable {
