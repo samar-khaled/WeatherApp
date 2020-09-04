@@ -23,8 +23,8 @@ class WeatherSearchViewModel {
             switch result {
             case .failure(let error):
                 completion(.failure(error))
-            case .success(let data):
-                break
+            case .success(let weather):
+                completion(.success(weather))
             }
         }
     }

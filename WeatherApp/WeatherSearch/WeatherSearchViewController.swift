@@ -128,11 +128,23 @@ class WeatherSearchViewController: UIViewController {
         }
     }
 
+    private func showLoadingView() -> UIViewController {
+        let spinnerViewController = SpinnerViewController()
+        self.addViewController(viewController: spinnerViewController)
+        return spinnerViewController
+    }
+
+    private func hideLoadingView(loadingView: UIViewController) {
+        self.removeViewController(viewController: loadingView)
+    }
+
     // MARK: - Actions
     @IBAction func goAction(_ sender: UIButton) {
         searchTextField.resignFirstResponder()
+        let loadingView = showLoadingView()
         viewModel.search(userInput: searchTextField.text ?? "") { [weak self] (result) in
             guard let self = self else { return }
+            self.hideLoadingView(loadingView: loadingView)
             switch result {
             case .failure(let error):
                 self.showError(error: error.message)
