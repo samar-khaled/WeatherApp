@@ -15,7 +15,6 @@ protocol Coordinator {
 class AppCoordinator: Coordinator {
     let window: UIWindow
     let rootViewController: UINavigationController
-    var currentViewController: UIViewController
 
     init(window: UIWindow) {
         self.window = window
@@ -24,7 +23,6 @@ class AppCoordinator: Coordinator {
 
         let viewController = WeatherSearchViewController()
         rootViewController.pushViewController(viewController, animated: false)
-        currentViewController = viewController
     }
 
     func start() {

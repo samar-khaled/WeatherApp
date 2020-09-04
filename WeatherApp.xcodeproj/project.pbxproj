@@ -28,6 +28,7 @@
 		619872FF250259AB0003DFAF /* WeatherDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619872FE250259AB0003DFAF /* WeatherDetailsViewController.swift */; };
 		61987301250259E00003DFAF /* WeatherDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61987300250259E00003DFAF /* WeatherDetailsHeaderView.swift */; };
 		6198730325025B920003DFAF /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6198730225025B920003DFAF /* AppCoordinator.swift */; };
+		61987306250266AD0003DFAF /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61987305250266AD0003DFAF /* SearchCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		619872FE250259AB0003DFAF /* WeatherDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsViewController.swift; sourceTree = "<group>"; };
 		61987300250259E00003DFAF /* WeatherDetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsHeaderView.swift; sourceTree = "<group>"; };
 		6198730225025B920003DFAF /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		61987305250266AD0003DFAF /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				6198730225025B920003DFAF /* AppCoordinator.swift */,
+				61987305250266AD0003DFAF /* SearchCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				619872FC250255C50003DFAF /* UIViewController+AddViewController.swift in Sources */,
 				61987301250259E00003DFAF /* WeatherDetailsHeaderView.swift in Sources */,
 				619872E225012AD60003DFAF /* WeatherSearchViewModel.swift in Sources */,
+				61987306250266AD0003DFAF /* SearchCoordinator.swift in Sources */,
 				619872EF25019B610003DFAF /* Network.swift in Sources */,
 				619872ED250178990003DFAF /* WeatherData.swift in Sources */,
 				619872E625012C280003DFAF /* WeatherSearch.swift in Sources */,

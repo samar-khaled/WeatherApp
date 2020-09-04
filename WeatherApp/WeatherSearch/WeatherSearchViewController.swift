@@ -57,6 +57,7 @@ class WeatherSearchViewController: UIViewController {
 
     // MARK: - Variables
     let viewModel = WeatherSearchViewModel()
+    var searchCoordinator: SearchCoordinator?
     // MARK: - View did load
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -141,10 +142,12 @@ class WeatherSearchViewController: UIViewController {
 
     private func finishSearching(weatherData: Weather) {
         DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            let viewController = WeatherDetailsViewController()
-            viewController.weatherData = weatherData
-            self.navigationController?.pushViewController(viewController, animated: true)
+            guard let self = self, let navigationController = self.navigationController else { return }
+            self.searchCoordinator = SearchCoordinator(
+                rootViewController: navigationController,
+                weatherData: weatherData
+            )
+            self.searchCoordinator?.start()
         }
     }
     // MARK: - Actions
