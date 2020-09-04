@@ -35,7 +35,7 @@ class WeatherSearchViewController: UIViewController {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.textAlignment = .left
         textField.font = UIFont.systemFont(ofSize: 13.0, weight: .regular)
-        textField.textColor = .systemBlue
+        textField.textColor = .black
         textField.backgroundColor = .white
         textField.borderStyle = .roundedRect
         textField.returnKeyType = .search
