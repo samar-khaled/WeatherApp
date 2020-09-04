@@ -25,7 +25,7 @@ class WeatherSearchViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 14.0, weight: .semibold)
-        label.textColor = .blue
+        label.textColor = .systemOrange
         label.text = "Welcome to the weather app"
         return label
     }()
@@ -35,7 +35,7 @@ class WeatherSearchViewController: UIViewController {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.textAlignment = .left
         textField.font = UIFont.systemFont(ofSize: 13.0, weight: .regular)
-        textField.textColor = .blue
+        textField.textColor = .systemBlue
         textField.backgroundColor = .white
         textField.borderStyle = .roundedRect
         textField.returnKeyType = .search
@@ -47,8 +47,8 @@ class WeatherSearchViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Go!", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
-        button.backgroundColor = .white
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 5
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.layer.borderWidth = 1
@@ -77,7 +77,7 @@ class WeatherSearchViewController: UIViewController {
 
     private func layoutControlView() {
         view.addSubview(controlsView)
-        let controlsViewHeight: CGFloat = 300.0
+        let controlsViewHeight: CGFloat = 200.0
         let controlsViewWidthMargin: CGFloat = -32
         controlsView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         controlsView.heightAnchor.constraint(equalToConstant: controlsViewHeight).isActive = true
@@ -115,9 +115,9 @@ class WeatherSearchViewController: UIViewController {
 
     private func layoutGoButton() {
         controlsView.addSubview(goButton)
-        let goButtonHeight: CGFloat = 32.0
-        let goButtonWidth: CGFloat = 200.0
-        goButton.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: marginConstant).isActive = true
+        let goButtonHeight: CGFloat = 50.0
+        let goButtonWidth: CGFloat = 100.0
+        goButton.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 16).isActive = true
         goButton.heightAnchor.constraint(equalToConstant: goButtonHeight).isActive = true
         goButton.centerXAnchor.constraint(equalTo: controlsView.centerXAnchor).isActive = true
         goButton.widthAnchor.constraint(equalToConstant: goButtonWidth).isActive = true
