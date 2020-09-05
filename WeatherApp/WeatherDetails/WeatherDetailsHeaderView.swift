@@ -59,7 +59,7 @@ class WeatherDetailsHeaderView: UIView {
     }()
 
     // MARK: - Variables
-    private var weatherData: Weather?
+    private var weatherData: WeatherData?
     private var detailsNaviagtor: DetailsNaviagtor?
 
     // MARK: - init
@@ -134,7 +134,7 @@ class WeatherDetailsHeaderView: UIView {
         return 140
     }
 
-    func config(weatherData: Weather, detailsNaviagtor: DetailsNaviagtor) {
+    func config(weatherData: WeatherData, detailsNaviagtor: DetailsNaviagtor) {
         self.weatherData = weatherData
         self.detailsNaviagtor = detailsNaviagtor
         dateLabel.text = weatherData.getDateTextNow()

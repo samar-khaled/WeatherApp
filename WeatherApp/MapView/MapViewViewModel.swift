@@ -11,16 +11,19 @@ import MapKit
 
 class MapViewViewModel {
     // MARK: - private var
-    private var weatherData: Weather
+    private var weatherData: WeatherData
 
     // MARK: - init
-    init(weatherData: Weather) {
+    init(weatherData: WeatherData) {
         self.weatherData = weatherData
     }
 
     // MARK: - func
     func getCityCLLocation() -> CLLocation {
-        CLLocation(latitude: weatherData.city.coord.lat, longitude: weatherData.city.coord.lon)
+        CLLocation(
+            latitude: weatherData.getCityData().getCoordinateData().lat,
+            longitude: weatherData.getCityData().getCoordinateData().lon
+        )
     }
 
     func getTemeratureSummary() -> String {

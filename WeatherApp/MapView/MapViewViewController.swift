@@ -27,7 +27,7 @@ class MapViewViewController: UIViewController {
     }
 
     // MARK: - Config methods
-    func config(weatherData: Weather) {
+    func config(weatherData: WeatherData) {
         viewModel = MapViewViewModel(weatherData: weatherData)
     }
 

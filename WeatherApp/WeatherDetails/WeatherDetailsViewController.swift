@@ -42,7 +42,7 @@ class WeatherDetailsViewController: UIViewController {
         layoutControls()
     }
     // MARK: - Config methods
-    func config(weatherData: Weather) {
+    func config(weatherData: WeatherData) {
         viewModel = WeatherDetailsViewModel(weatherData: weatherData)
     }
 
@@ -73,7 +73,7 @@ class WeatherDetailsViewController: UIViewController {
 
     private func layoutTableView() {
         view.addSubview(weatherTableView)
-        let height = WeatherDataTableViewCell.cellHeight * CGFloat(viewModel?.getWeatherData().list.count ?? 0)
+        let height = WeatherDataTableViewCell.cellHeight * CGFloat(viewModel?.getWeatherForecast().count ?? 0)
         let weatherTableViewHeightAnchor = weatherTableView.heightAnchor.constraint(equalToConstant: height)
         weatherTableViewHeightAnchor.priority = UILayoutPriority.defaultHigh
         weatherTableViewHeightAnchor.isActive = true
@@ -134,7 +134,7 @@ class WeatherDetailsViewController: UIViewController {
 extension WeatherDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let viewModel = viewModel else { return 0 }
-        return viewModel.getWeatherData().list.count
+        return viewModel.getWeatherForecast().count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -22,21 +22,21 @@ class WeatherDataTableViewCell: UITableViewCell {
     @IBOutlet weak var precipitationLabel: UILabel!
     @IBOutlet weak var currentConditionLabel: UILabel!
     @IBOutlet weak var feelsLikeLabel: UILabel!
-    private var weatherForecast: WeatherForecast?
+    private var weatherForecast: WeatherForecastData?
     // MARK: - awake from Nib
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
     // MARK: - helper func
-    func config(weatherForecast: WeatherForecast) {
+    func config(weatherForecast: WeatherForecastData) {
         self.weatherForecast = weatherForecast
         dateLable.text = weatherForecast.getDateText()
-        temperatureLabel.text = weatherForecast.main.getTempatureText()
-        humidityLabel.text = weatherForecast.main.getHumidityText()
-        pressureLabel.text = weatherForecast.main.getPressureText()
+        temperatureLabel.text = weatherForecast.getTemperatureData().getTempatureText()
+        humidityLabel.text = weatherForecast.getTemperatureData().getHumidityText()
+        pressureLabel.text = weatherForecast.getTemperatureData().getPressureText()
         precipitationLabel.text = weatherForecast.getPrecipitationText()
-        feelsLikeLabel.text = weatherForecast.main.getFeelsLikeText()
+        feelsLikeLabel.text = weatherForecast.getTemperatureData().getFeelsLikeText()
         currentConditionLabel.text = weatherForecast.getCurrentConditionText()
         if let imageName = weatherForecast.getCurrentConditionImageText() {
             statusImageView.load(url: WeatherService().getImageUrl(imageName: imageName)

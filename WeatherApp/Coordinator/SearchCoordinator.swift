@@ -10,9 +10,9 @@ import UIKit
 
 class SearchCoordinator: Coordinator {
     let rootViewController: UINavigationController
-    let weatherData: Weather
+    let weatherData: WeatherData
 
-    init(rootViewController: UINavigationController, weatherData: Weather) {
+    init(rootViewController: UINavigationController, weatherData: WeatherData) {
         self.rootViewController = rootViewController
         self.weatherData = weatherData
     }

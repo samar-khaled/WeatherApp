@@ -143,7 +143,7 @@ class WeatherSearchViewController: UIViewController {
         self.removeViewController(viewController: loadingView)
     }
 
-    private func finishSearching(weatherData: Weather) {
+    private func finishSearching(weatherData: WeatherData) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self, let navigationController = self.navigationController else { return }
             self.searchCoordinator = SearchCoordinator(

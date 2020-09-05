@@ -27,14 +27,6 @@ class WeatherDetailsViewModelTestCase: XCTestCase {
         XCTAssertEqual(sut.getCityName(), "London, GB")
     }
 
-    func test_getWeatherData() throws {
-        XCTAssertEqual(sut.getWeatherData(), try getMockWeatherData())
-    }
-
-    func test_getWeatherForecast() throws {
-        XCTAssertEqual(sut.getWeatherForecast(), try getMockWeatherData().list)
-    }
-
     func test_refreshWeatherData() throws {
         var expectation = self.expectation(description: "Refresh functionality")
         sut.refreshWeatherData { (result) in
@@ -50,7 +42,7 @@ class WeatherDetailsViewModelTestCase: XCTestCase {
         waitForExpectations(timeout: 4)
     }
 
-    func getMockWeatherData() throws -> Weather {
+    func getMockWeatherData() throws -> WeatherData {
         let data: Data
 
         let testBundle = Bundle(for: WeatherDetailsViewModelTestCase.self)
@@ -58,7 +50,7 @@ class WeatherDetailsViewModelTestCase: XCTestCase {
             testBundle.url(forResource: "data", withExtension: "json")
         )
         data = try XCTUnwrap(try Data(contentsOf: url))
-        return try JSONDecoder().decode(Weather.self, from: data)
+        return try JSONDecoder().decode(Weather.self, from: data) as WeatherData
     }
 
 }
