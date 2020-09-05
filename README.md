@@ -25,5 +25,4 @@ Notes:
 - There are units testing and UI testing however for time constrain I couldn't make all the unit testing
 - The app files are grouped by model in folders.
 - I didn't have time to do the following:
-    1. Data loading: making data loader (WeatherService) protocol based  to enable implementing different loaders for different sources (servers, database, Testing mocks, …etc ).
-    2. Make (Weather) model also protocol based in order to remove the dependency of the current Api model.
+    * Data loading: making data loader (WeatherService) protocol based  to enable implementing different loaders for different sources (servers, database, Testing mocks, …etc ).
