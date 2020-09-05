@@ -19,7 +19,11 @@ STORY-4: As a user, I can refresh to see the weather for the entered location I 
 STORY-5: As a user, I can see the input location on a small map view The map can be either a static map image centered on the location, or some live map component (google maps, open street maps, etc).
 
 Notes:
-- The app using *rapidapi* for Open Weather Map API https://openweathermap.org/forecast5
+- The app using *rapidapi* that reterive data from Open Weather Map API https://openweathermap.org/forecast5
 - I couldn't find an API that get 14 days for free, this API get 5 day / 3 hour forecast data
 - Most of the app layout is done programatically, just one view was using Nib files.
-- There are units testing and UI testing.
+- There are units testing and UI testing however for time constrain I couldn't make all the unit testing
+- The app files are grouped by model in folders.
+- I didn't have time to do the following:
+    1. Data loading: making data loader (WeatherService) protocol based  to enable implementing different loaders for different sources (servers, database, Testing mocks, …etc ).
+    2. Make (Weather) model also protocol based in order to remove the dependency of the current Api model.
