@@ -34,7 +34,6 @@ class WeatherDetailsViewController: UIViewController {
 
     // MARK: - variables
     private var viewModel: WeatherDetailsViewModel?
-    private var weatherTableViewHeightAnchor: NSLayoutConstraint?
     private var detailsCoordinator: DetailsCoordinator?
 
     // MARK: - view did load
@@ -75,9 +74,9 @@ class WeatherDetailsViewController: UIViewController {
     private func layoutTableView() {
         view.addSubview(weatherTableView)
         let height = WeatherDataTableViewCell.cellHeight * CGFloat(viewModel?.getWeatherData().list.count ?? 0)
-        weatherTableViewHeightAnchor = weatherTableView.heightAnchor.constraint(equalToConstant: height)
-        weatherTableViewHeightAnchor?.priority = UILayoutPriority.defaultHigh
-        weatherTableViewHeightAnchor?.isActive = true
+        let weatherTableViewHeightAnchor = weatherTableView.heightAnchor.constraint(equalToConstant: height)
+        weatherTableViewHeightAnchor.priority = UILayoutPriority.defaultHigh
+        weatherTableViewHeightAnchor.isActive = true
         weatherTableView.topAnchor.constraint(
             equalTo: weatherDetailsHeaderView.bottomAnchor,
             constant: 16
