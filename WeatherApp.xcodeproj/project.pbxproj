@@ -42,6 +42,7 @@
 		619873222502F99F0003DFAF /* WeatherSearchViewModelTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619873212502F99F0003DFAF /* WeatherSearchViewModelTestCase.swift */; };
 		619873242502FBEF0003DFAF /* AppCoordinatorTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619873232502FBEF0003DFAF /* AppCoordinatorTestCase.swift */; };
 		619873262503022D0003DFAF /* WeatherDetailsViewModelTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619873252503022D0003DFAF /* WeatherDetailsViewModelTestCase.swift */; };
+		61987328250311890003DFAF /* Date+weekDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61987327250311890003DFAF /* Date+weekDay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		619873212502F99F0003DFAF /* WeatherSearchViewModelTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSearchViewModelTestCase.swift; sourceTree = "<group>"; };
 		619873232502FBEF0003DFAF /* AppCoordinatorTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorTestCase.swift; sourceTree = "<group>"; };
 		619873252503022D0003DFAF /* WeatherDetailsViewModelTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsViewModelTestCase.swift; sourceTree = "<group>"; };
+		61987327250311890003DFAF /* Date+weekDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+weekDay.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +239,7 @@
 				619872FB250255C50003DFAF /* UIViewController+AddViewController.swift */,
 				6198730E2502A04A0003DFAF /* UIImageView+loadFromURL.swift */,
 				619873122502C1DD0003DFAF /* String+trimSpaces.swift */,
+				61987327250311890003DFAF /* Date+weekDay.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				619872E625012C280003DFAF /* WeatherSearch.swift in Sources */,
 				619872E92501495E0003DFAF /* WeatherService.swift in Sources */,
 				619873152502C40E0003DFAF /* WeatherDetailsViewModel.swift in Sources */,
+				61987328250311890003DFAF /* Date+weekDay.swift in Sources */,
 				619872B125010BF20003DFAF /* AppDelegate.swift in Sources */,
 				619872B325010BF20003DFAF /* SceneDelegate.swift in Sources */,
 				6198731B2502D1640003DFAF /* MapViewViewController.swift in Sources */,

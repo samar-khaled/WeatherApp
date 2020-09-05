@@ -30,7 +30,8 @@ struct Weather: Decodable, Equatable {
 
     func getDateTextNow() -> String {
         let date = list.first?.getDate() ?? Date()
-        return "as of \(DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .long))"
+        let dayOfWeek = date.dayOfWeek() ?? ""
+        return "\(dayOfWeek) \(DateFormatter.localizedString(from: date, dateStyle: .short, timeStyle: .short))"
     }
 
     func getCurrentConditionTextNow() -> String {

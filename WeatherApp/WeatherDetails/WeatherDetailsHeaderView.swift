@@ -124,7 +124,7 @@ class WeatherDetailsHeaderView: UIView {
         viewMapButton.topAnchor.constraint(
             equalTo: currentConditionImageView.bottomAnchor, constant: marginConstant).isActive = true
         viewMapButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
-        viewMapButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -marginConstant).isActive = true
+        viewMapButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
         viewMapButton.widthAnchor.constraint(equalToConstant: 32).isActive = true
         viewMapButton.addTarget(self, action: #selector(viewMapAction(_:)), for: .touchUpInside)
     }
