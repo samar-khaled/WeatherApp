@@ -52,13 +52,9 @@ class WeatherDetailsHeaderView: UIView {
     let viewMapButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Map", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
-        button.backgroundColor = .white
-        button.layer.cornerRadius = 5
-        button.layer.borderColor = UIColor.lightGray.cgColor
-        button.layer.borderWidth = 1
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: .semibold)
+        let image = #imageLiteral(resourceName: "mapIcon")
+        button.setBackgroundImage(image, for: .normal)
+        button.backgroundColor = .clear
         return button
     }()
 
@@ -127,9 +123,9 @@ class WeatherDetailsHeaderView: UIView {
         self.addSubview(viewMapButton)
         viewMapButton.topAnchor.constraint(
             equalTo: currentConditionImageView.bottomAnchor, constant: marginConstant).isActive = true
-        viewMapButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        viewMapButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
         viewMapButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -marginConstant).isActive = true
-        viewMapButton.widthAnchor.constraint(equalToConstant: 90).isActive = true
+        viewMapButton.widthAnchor.constraint(equalToConstant: 32).isActive = true
         viewMapButton.addTarget(self, action: #selector(viewMapAction(_:)), for: .touchUpInside)
     }
 
