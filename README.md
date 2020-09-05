@@ -24,5 +24,6 @@ Notes:
 - Most of the app layout is done programatically, just one view was using Nib files.
 - There are units testing and UI testing however for time constrain I couldn't make all the unit testing
 - The app files are grouped by model in folders.
+- Using Kingfisher library via swift package for loading images.
 - I didn't have time to do the following:
     * Data loading: making data loader (WeatherService) protocol based  to enable implementing different loaders for different sources (servers, database, Testing mocks, …etc ).
