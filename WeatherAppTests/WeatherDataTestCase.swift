@@ -25,7 +25,7 @@ class WeatherDataTestCase: XCTestCase {
         XCTAssertNotNil(sut.city.getSunriseDate() as Date)
         XCTAssertNotNil(sut.city.getSunsetDate() as Date)
         XCTAssertNotNil(sut.city.coord)
-        XCTAssertEqual(sut.getDateTextNow(), "as of 11:00:00 PM GMT+2")
+        XCTAssertEqual(sut.getDateTextNow(), "Thursday 9/3/20, 11:00 PM")
         XCTAssertEqual(sut.getHumidityTextNow(), "67%")
         XCTAssertEqual(sut.getPressureTextNow(), "1018 hPa")
         XCTAssertEqual(sut.getTemperatureTextNow(), "63.03°")
