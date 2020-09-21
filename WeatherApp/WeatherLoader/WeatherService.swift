@@ -38,8 +38,9 @@ extension Endpoint: RequestProviding {
 
 class WeatherService: NSObject, DataLoader {
     var network: Networking
-    override init() {
-        self.network = NetworkHandler()
+    init(network: Networking = NetworkHandler()) {
+        self.network = network
+        super.init()
     }
 
     func loadData(searchData: WeatherSearchModel, completion: @escaping(Result<Weather, WeatherSearchError>) -> Void) {
