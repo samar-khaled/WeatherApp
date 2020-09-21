@@ -12,14 +12,16 @@ import XCTest
 class NetworkTestCase: XCTestCase {
     let timeout: TimeInterval = 10
     var expectation: XCTestExpectation!
-
+    var sut: WeatherService!
     override func setUpWithError() throws {
         expectation = expectation(description: "Server responds in reasonable time")
     }
 
     func test_weatherServiceSuccess() throws {
         let searchData = WeatherSearchModel(userInput: "London")
-        WeatherService().loadData(searchData: searchData) { (result) in
+        let mockedNetwork = MockNetworking(mockedStatusCode: 200, mockedData: try MockedData.getSuccessMockedData())
+        sut = WeatherService(network: mockedNetwork)
+        sut.loadData(searchData: searchData) { (result) in
             defer { self.expectation.fulfill() }
             switch result {
             case .success(let data):
