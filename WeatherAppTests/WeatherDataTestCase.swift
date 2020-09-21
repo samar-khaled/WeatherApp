@@ -11,13 +11,7 @@ import XCTest
 
 class WeatherDataTestCase: XCTestCase {
     func test_decodingWeatherData() throws {
-        let data: Data
-
-        let testBundle = Bundle(for: WeatherDataTestCase.self)
-        let url = try XCTUnwrap(
-            testBundle.url(forResource: "data", withExtension: "json")
-        )
-        data = try XCTUnwrap(try Data(contentsOf: url))
+        let data =  try XCTUnwrap( MockedData.getSuccessMockedData() )
         let sut = try JSONDecoder().decode(Weather.self, from: data)
         XCTAssertNotNil(sut)
         XCTAssertEqual(sut.city.name, "London")

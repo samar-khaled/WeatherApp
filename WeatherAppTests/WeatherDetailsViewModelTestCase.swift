@@ -16,7 +16,7 @@ class WeatherDetailsViewModelTestCase: XCTestCase {
     var expectation: XCTestExpectation!
 
     override func setUpWithError() throws {
-        sut = WeatherDetailsViewModel(weatherData: try getMockWeatherData())
+        sut = WeatherDetailsViewModel(weatherData: try MockedData.getSuccessMockWeatherData())
     }
 
     override func tearDownWithError() throws {
@@ -28,7 +28,7 @@ class WeatherDetailsViewModelTestCase: XCTestCase {
     }
 
     func test_refreshWeatherData() throws {
-        var expectation = self.expectation(description: "Refresh functionality")
+        let expectation = self.expectation(description: "Refresh functionality")
         sut.refreshWeatherData { (result) in
             defer { expectation.fulfill() }
             switch result {
@@ -41,16 +41,4 @@ class WeatherDetailsViewModelTestCase: XCTestCase {
         }
         waitForExpectations(timeout: 4)
     }
-
-    func getMockWeatherData() throws -> WeatherData {
-        let data: Data
-
-        let testBundle = Bundle(for: WeatherDetailsViewModelTestCase.self)
-        let url = try XCTUnwrap(
-            testBundle.url(forResource: "data", withExtension: "json")
-        )
-        data = try XCTUnwrap(try Data(contentsOf: url))
-        return try JSONDecoder().decode(Weather.self, from: data) as WeatherData
-    }
-
 }

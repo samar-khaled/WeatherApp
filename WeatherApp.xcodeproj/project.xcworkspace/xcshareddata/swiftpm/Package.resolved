@@ -6,8 +6,17 @@
         "repositoryURL": "https://github.com/onevcat/Kingfisher.git",
         "state": {
           "branch": null,
-          "revision": "175eeb4618b0a6ef4d69a7409b6a74ddd235a093",
-          "version": "5.15.0"
+          "revision": "ffc614446cab6ae106619606698d642c23ed25be",
+          "version": "5.15.3"
+        }
+      },
+      {
+        "package": "Mocker",
+        "repositoryURL": "https://github.com/WeTransfer/Mocker",
+        "state": {
+          "branch": null,
+          "revision": "2128c4224ac5e9d2a32d485f8bd230a3e559be86",
+          "version": "2.3.0"
         }
       }
     ]
